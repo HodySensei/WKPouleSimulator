@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WK_Poule_Simulator.MainPage" BackgroundColor="Green">
+
+    <StackLayout Padding="10" >
+
+        <Grid x:Name="Teams" BackgroundColor="#77BB00" HorizontalOptions="End" VerticalOptions="Start">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="90"></ColumnDefinition>
+                <ColumnDefinition Width="90"></ColumnDefinition>
+                <ColumnDefinition Width="90"></ColumnDefinition>
+                <ColumnDefinition Width="90"></ColumnDefinition>
+                <ColumnDefinition Width="90"></ColumnDefinition>
+                <ColumnDefinition Width="90"></ColumnDefinition>
+                <ColumnDefinition Width="90"></ColumnDefinition>
+                <ColumnDefinition Width="90"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+
+            <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="8" BackgroundColor="#99DD00">
+                <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="Poule A" TextColor="Black"></Label>
+            </Grid>
+
+
+            <Grid Grid.Row="1" Grid.Column="0" BackgroundColor="#88CC00">
+                <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="Team" TextColor="Black"></Label>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="1" BackgroundColor="#88CC00">
+                <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="Wins" TextColor="Black"></Label>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="2" BackgroundColor="#88CC00">
+                <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="Draws" TextColor="Black"></Label>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="3" BackgroundColor="#88CC00">
+                <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="Loses" TextColor="Black"></Label>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="4" BackgroundColor="#88CC00">
+                <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="For" TextColor="Black"></Label>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="5" BackgroundColor="#88CC00">
+                <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="Against" TextColor="Black"></Label>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="6" BackgroundColor="#88CC00">
+                <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="Difference" TextColor="Black"></Label>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="7" BackgroundColor="#88CC00">
+                <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="Points" TextColor="Black" FontAttributes="Bold"></Label>
+            </Grid>
+
+            <Grid Grid.Row="2" Grid.Column="0" BackgroundColor="#77BB00">
+                <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center"  Text="{Binding TeamA.Name}" TextColor="Black"></Label>
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="1" BackgroundColor="#77BB00">
+                <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center"  Text="{Binding TeamA.Win}" TextColor="Black"></Label>
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="2" BackgroundColor="#77BB00">
+                <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="{Binding TeamA.Draw}" TextColor="Black"></Label>
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="3" BackgroundColor="#77BB00">
+                <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="{Binding TeamA.Loss}" TextColor="Black"></Label>
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="4" BackgroundColor="#77BB00">
+                <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="{Binding TeamA.For}" TextColor="Black"></Label>
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="5" BackgroundColor="#77BB00">
+                <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="{Binding TeamA.Against}" TextColor="Black"></Label>
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="6" BackgroundColor="#77BB00">
+                <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="{Binding TeamA.Difference}" TextColor="Black"></Label>
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="7" BackgroundColor="#77BB00">
+                <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="{Binding TeamA.Points}" TextColor="Black" FontAttributes="Bold"></Label>
+            </Grid>
+
+
+            <Grid Grid.Row="3" Grid.Column="0" BackgroundColor="#55BB00">
+                <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center"  Text="{Binding TeamB.Name}" TextColor="Black"></Label>
+            </Grid>
+            <Grid Grid.Row="3" Grid.Column="1" BackgroundColor="#55BB00">
+                <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center"  Text="{Binding TeamB.Win}" TextColor="Black"></Label>
+            </Grid>
+            <Grid Grid.Row="3" Grid.Column="2" BackgroundColor="#55BB00">
+                <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="{Binding TeamB.Draw}" TextColor="Black"></Label>
+            </Grid>
+            <Grid Grid.Row="3" Grid.Column="3" BackgroundColor="#55BB00">
+                <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="{Binding TeamB.Loss}" TextColor="Black"></Label>
+            </Grid>
+            <Grid Grid.Row="3" Grid.Column="4" BackgroundColor="#55BB00">
+                <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="{Binding TeamB.For}" TextColor="Black"></Label>
+            </Grid>
+            <Grid Grid.Row="3" Grid.Column="5" BackgroundColor="#55BB00">
+                <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="{Binding TeamB.Against}" TextColor="Black"></Label>
+            </Grid>
+            <Grid Grid.Row="3" Grid.Column="6" BackgroundColor="#55BB00">
+                <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="{Binding TeamB.Difference}" TextColor="Black"></Label>
+            </Grid>
+            <Grid Grid.Row="3" Grid.Column="7" BackgroundColor="#55BB00">
+                <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="{Binding TeamB.Points}" TextColor="Black" FontAttributes="Bold"></Label>
+            </Grid>
+
+            
+            <Grid Grid.Row="4" Grid.Column="0" BackgroundColor="#77BB00">
+                <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center"  Text="{Binding TeamC.Name}" TextColor="Black"></Label>
+            </Grid>
+            <Grid Grid.Row="4" Grid.Column="1" BackgroundColor="#77BB00">
+                <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center"  Text="{Binding TeamC.Win}" TextColor="Black"></Label>
+            </Grid>
+            <Grid Grid.Row="4" Grid.Column="2" BackgroundColor="#77BB00">
+                <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="{Binding TeamC.Draw}" TextColor="Black"></Label>
+            </Grid>
+            <Grid Grid.Row="4" Grid.Column="3" BackgroundColor="#77BB00">
+                <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="{Binding TeamC.Loss}" TextColor="Black"></Label>
+            </Grid>
+            <Grid Grid.Row="4" Grid.Column="4" BackgroundColor="#77BB00">
+                <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="{Binding TeamC.For}" TextColor="Black"></Label>
+            </Grid>
+            <Grid Grid.Row="4" Grid.Column="5" BackgroundColor="#77BB00">
+                <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="{Binding TeamC.Against}" TextColor="Black"></Label>
+            </Grid>
+            <Grid Grid.Row="4" Grid.Column="6" BackgroundColor="#77BB00">
+                <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="{Binding TeamC.Difference}" TextColor="Black"></Label>
+            </Grid>
+            <Grid Grid.Row="4" Grid.Column="7" BackgroundColor="#77BB00">
+                <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="{Binding TeamC.Points}" TextColor="Black" FontAttributes="Bold"></Label>
+            </Grid>
+        
+
+
+        <Grid Grid.Row="5" Grid.Column="0" BackgroundColor="#55BB00">
+            <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center"  Text="{Binding TeamD.Name}" TextColor="Black"></Label>
+        </Grid>
+        <Grid Grid.Row="5" Grid.Column="1" BackgroundColor="#55BB00">
+            <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center"  Text="{Binding TeamD.Win}" TextColor="Black"></Label>
+        </Grid>
+        <Grid Grid.Row="5" Grid.Column="2" BackgroundColor="#55BB00">
+            <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="{Binding TeamD.Draw}" TextColor="Black"></Label>
+        </Grid>
+        <Grid Grid.Row="5" Grid.Column="3" BackgroundColor="#55BB00">
+            <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="{Binding TeamD.Loss}" TextColor="Black"></Label>
+        </Grid>
+        <Grid Grid.Row="5" Grid.Column="4" BackgroundColor="#55BB00">
+            <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="{Binding TeamD.For}" TextColor="Black"></Label>
+        </Grid>
+        <Grid Grid.Row="5" Grid.Column="5" BackgroundColor="#55BB00">
+            <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="{Binding TeamD.Against}" TextColor="Black"></Label>
+        </Grid>
+        <Grid Grid.Row="5" Grid.Column="6" BackgroundColor="#55BB00">
+            <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="{Binding TeamD.Difference}" TextColor="Black"></Label>
+        </Grid>
+        <Grid Grid.Row="5" Grid.Column="7" BackgroundColor="#55BB00">
+            <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="{Binding TeamD.Points}" TextColor="Black" FontAttributes="Bold"></Label>
+        </Grid>
+            </Grid>
+
+        <Button BackgroundColor="Lime" TextColor="Black" x:Name="StartPoule" Text="Start Simulator" Clicked="StartSimulator_Clicked"></Button>
+
+    </StackLayout>
+
+</ContentPage>
