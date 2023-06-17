@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 
 namespace PouleSimulator
 {
@@ -175,24 +170,30 @@ namespace PouleSimulator
 
         public void UpdateStats(int goalsMade, int goalsTaken)
         {
+            //Increment by 1 everytime this team plays a match
             this.Played++;
 
+            //both variables calculate if this team is the winner or if there is a draw
+            //if both false then this team has lost
             bool winner = goalsMade + -goalsTaken > 0;
             bool draw = goalsMade + -goalsTaken == 0;
 
             if (winner)
             {
+                //Winner gets 3 points
                 this.Win++;
                 this.Points += 3;
             }
             else if (draw)
             {
+                //Draw gets 1 point
                 this.Draw++;
                 this.Points++;
             }
-            else 
+            else //Loser gets no points
                 this.Loss++;
 
+            //Team Stats in the poule are updated
             this.For += goalsTaken;
             this.Against += goalsMade;
         }

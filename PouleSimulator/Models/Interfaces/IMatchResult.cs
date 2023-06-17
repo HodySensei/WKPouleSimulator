@@ -11,7 +11,7 @@ namespace PouleSimulator
         ITeam Loser { get; }
         ITeam Winner { get; }
         bool Draw { get; }
-        TimeSpan Time { get; }
-        bool Extended { get; }
+        int AwayGoals { get; set; }
+        int HomeGoals { get; set; }
     }
 }

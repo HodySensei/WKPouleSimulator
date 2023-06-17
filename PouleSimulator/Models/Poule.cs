@@ -1,15 +1,13 @@
-﻿
-
-using System.ComponentModel;
+﻿using System.ComponentModel;
 
 namespace PouleSimulator
 {
     public class Poule: IPoule, INotifyPropertyChanged
     {
-        public ITeam teamA;
-        public ITeam teamB;
-        public ITeam teamC;
-        public ITeam teamD;
+        private ITeam teamA;
+        private ITeam teamB;
+        private ITeam teamC;
+        private ITeam teamD;
 
         public ITeam TeamA 
         {   get => teamA;

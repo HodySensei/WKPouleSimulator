@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PouleSimulator
+﻿namespace PouleSimulator
 {
     public class Match : IMatch
     {
@@ -12,63 +6,57 @@ namespace PouleSimulator
         {
             MatchResult matchResult = new MatchResult();
             Random random = new Random();
-            int matchDuration = 90;
-            int extendedTime = 0;
 
+            //Predicting the amount of goals made by both teams
             int homeGoals = CalculateGoals(home);
             int awayGoals = CalculateGoals(away);
-            Console.WriteLine($"Home team goals: {homeGoals}");
-            Console.WriteLine($"Away team goals: {awayGoals}");
 
             if (homeGoals > awayGoals)
             {
-                Console.WriteLine("Home team wins!");
+                //Home team wins!
                 matchResult.Winner = home;
                 matchResult.Loser = away;
             }
             else if (homeGoals < awayGoals)
             {
-                Console.WriteLine("Away team wins!");
+                //Away team wins!
                 matchResult.Winner = away;
                 matchResult.Loser = home;
             }
             else
             {
-                Console.WriteLine("It's a draw!");
-                
-                extendedTime = random.Next(3, 11);
-                Console.WriteLine($"Extra time: {extendedTime} minutes");
-
+                //It's a draw, so that means we extend the match
+                // Adding any goals that were made during extra time
                 homeGoals += CalculateGoals(home);
                 awayGoals += CalculateGoals(away);
-                Console.WriteLine($"Home team goals (after extra time): {homeGoals}");
-                Console.WriteLine($"Away team goals (after extra time): {awayGoals}");
 
 
                 if (homeGoals > awayGoals)
                 {
-                    Console.WriteLine("Home team wins after extra time!");
+                    //Home team wins after extra time!
                     matchResult.Winner = home;
                     matchResult.Loser = away;
                 }
                 else if (homeGoals < awayGoals)
                 {
-                    Console.WriteLine("Away team wins after extra time!");
+                    //Away team wins after extra time!
                     matchResult.Winner = away;
                     matchResult.Loser = home;
                 }
                 else
                 {
-                    Console.WriteLine("It's a draw even after extra time!");
+                    //It's a draw even after extra time!
                     matchResult.Draw = true;
                 }
             }
 
-            matchResult.Time = TimeSpan.FromMinutes(matchDuration + extendedTime);
-            Console.WriteLine($"Total duration: {matchResult.Time.TotalMinutes} minutes");
-
+            //Updates the status of each team
             home.UpdateStats(homeGoals, awayGoals);
             away.UpdateStats(awayGoals, homeGoals);
+
+            //Sets the results for the match
+            matchResult.HomeGoals = homeGoals;
+            matchResult.AwayGoals = awayGoals;
 
             return matchResult;
         }
@@ -78,14 +66,18 @@ namespace PouleSimulator
             Random random = new Random();
 
             int goals = 0;
-            int maxGoals = 5; // Maximum number of goals a team can score
+
+            // Maximum number of goals a team can score
+            int maxGoals = 9;
 
             for (int i = 0; i < maxGoals; i++)
             {
-                int goalChance = ((team.OffensePoints * 35 + team.DefensePoints * 35 + team.TeamPlayPoints * 30 * new Random().Next(0, 5)) / 100);
-                int scoreProbability = goalChance - (i * 10); // Decrease probability for each goal already scored
+                int goalChance = ((team.OffensePoints * 35 + team.DefensePoints * 35 + team.TeamPlayPoints * 30 + new Random().Next(0, 100)) / 100);
 
-                if (random.Next(-150,10) > scoreProbability)
+                // Decrease probability for each goal already scored
+                int scoreProbability = goalChance - (i * 10);
+
+                if (random.Next(0,100) < scoreProbability)
                 {
                     goals++;
                 }

@@ -15,7 +15,7 @@ namespace PouleSimulator
 
             if (pointsComparison != 0)
             {
-                // If Points are different, return the comparison result
+                // If Points are different, return the comparison result, knockout teams are decided
                 return pointsComparison;
             }
             else
@@ -24,20 +24,24 @@ namespace PouleSimulator
 
                 if (pointsComparison != 0)
                 {
-                    // If Points are different, return the comparison result
+                    // If Differences are different, return the comparison result, knockout teams are decided
                     return pointsComparison;
                 }
                 else
                 {
+                    // If there are still ties then we use other ways to determine who advances according to FIFA World cup rules
                     pointsComparison = y.For.CompareTo(x.For);
 
                     if (pointsComparison != 0)
                     {
-                        // If Points are different, return the comparison result
+
+                        //return the comparison result, knockout teams are decided
                         return pointsComparison;
                     }
                     else
                     {
+
+                        //return the comparison result, knockout teams are decided
                         return y.Against.CompareTo(x.Against);
                     }
                 }
