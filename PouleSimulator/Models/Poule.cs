@@ -4,54 +4,54 @@ namespace PouleSimulator
 {
     public class Poule: IPoule, INotifyPropertyChanged
     {
-        private ITeam teamA;
-        private ITeam teamB;
-        private ITeam teamC;
-        private ITeam teamD;
+        private ITeam _teamA;
+        private ITeam _teamB;
+        private ITeam _teamC;
+        private ITeam _teamD;
 
         public ITeam TeamA 
-        {   get => teamA;
+        {   get => _teamA;
             set
             {
-                if (teamA != value)
+                if (_teamA != value)
                 {
-                    teamA = value;
+                    _teamA = value;
                     OnPropertyChanged(nameof(TeamA));
                 }
             }
         }
         public ITeam TeamB
         {
-            get => teamB;
+            get => _teamB;
             set
             {
-                if (teamB != value)
+                if (_teamB != value)
                 {
-                    teamB = value;
+                    _teamB = value;
                     OnPropertyChanged(nameof(TeamB));
                 }
             }
         }
         public ITeam TeamC
         {
-            get => teamC;
+            get => _teamC;
             set
             {
-                if (teamC != value)
+                if (_teamC != value)
                 {
-                    teamC = value;
+                    _teamC = value;
                     OnPropertyChanged(nameof(TeamC));
                 }
             }
         }
         public ITeam TeamD
         {
-            get => teamD;
+            get => _teamD;
             set
             {
-                if (teamD != value)
+                if (_teamD != value)
                 {
-                    teamD = value;
+                    _teamD = value;
                     OnPropertyChanged(nameof(TeamD));
                 }
             }

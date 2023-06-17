@@ -4,9 +4,13 @@ namespace WK_Poule_Simulator
 {
     public partial class MainPage : ContentPage
     {
-        private IServiceProvider serviceProvider;
-        private Poule poule;
-        private int matchesPlayed;
+        private IServiceProvider _serviceProvider;
+        private Poule _poule;
+        private int _matchesPlayed;
+
+        public IServiceProvider ServiceProvider { get => _serviceProvider; set => _serviceProvider = value; }
+        public Poule Poule { get => _poule; set => _poule = value; }
+        public int MatchesPlayed { get => _matchesPlayed; set => _matchesPlayed = value; }
 
         public MainPage()
         {
@@ -17,8 +21,8 @@ namespace WK_Poule_Simulator
             services.AddTransient<ITeam, Team>();
             services.AddTransient<IMatch, Match>();
             services.AddTransient<IMatchResult, MatchResult>(); 
-            poule = new Poule();
-            serviceProvider = services.BuildServiceProvider();
+            Poule = new Poule();
+            ServiceProvider = services.BuildServiceProvider();
             this.Reset();
         }
 
@@ -27,7 +31,7 @@ namespace WK_Poule_Simulator
             //Initializing the objects needed to start a match.
             var button = (Button)sender;
             var matchup = (MatchUp)button.BindingContext;
-            var match = serviceProvider.GetService<IMatch>();
+            var match = ServiceProvider.GetService<IMatch>();
             var result = match.Play(matchup.Home, matchup.Away);
 
 
@@ -46,8 +50,8 @@ namespace WK_Poule_Simulator
                 await DisplayAlert("Result", $"The winner is {result.Winner.Name}!", "OK");
 
             //this chunk checks if there are 6 matches played
-            matchesPlayed++;
-            if (matchesPlayed == 6)
+            MatchesPlayed++;
+            if (MatchesPlayed == 6)
             {
                 //Turn on the Finalize Poule button to determine the teams for knockout stage
                 btnFinalizePoule.BackgroundColor = new Color(0, 255, 255);
@@ -69,53 +73,53 @@ namespace WK_Poule_Simulator
         {
             //Setting every respective property of a match to a matchup object
             //Binding it to its respective button so that it has data on the go
-            btnStartMatch1.BindingContext = new MatchUp() { Home = poule.TeamA, Away = poule.TeamB, OutputLabel = lblMatch1Stance };
-            btnStartMatch2.BindingContext = new MatchUp() { Home = poule.TeamA, Away = poule.TeamC, OutputLabel = lblMatch2Stance };
-            btnStartMatch3.BindingContext = new MatchUp() { Home = poule.TeamA, Away = poule.TeamD, OutputLabel = lblMatch3Stance };
-            btnStartMatch4.BindingContext = new MatchUp() { Home = poule.TeamB, Away = poule.TeamC, OutputLabel = lblMatch4Stance };
-            btnStartMatch5.BindingContext = new MatchUp() { Home = poule.TeamB, Away = poule.TeamD, OutputLabel = lblMatch5Stance };
-            btnStartMatch6.BindingContext = new MatchUp() { Home = poule.TeamC, Away = poule.TeamD, OutputLabel = lblMatch6Stance };
+            btnStartMatch1.BindingContext = new MatchUp() { Home = Poule.TeamA, Away = Poule.TeamB, OutputLabel = lblMatch1Stance };
+            btnStartMatch2.BindingContext = new MatchUp() { Home = Poule.TeamA, Away = Poule.TeamC, OutputLabel = lblMatch2Stance };
+            btnStartMatch3.BindingContext = new MatchUp() { Home = Poule.TeamA, Away = Poule.TeamD, OutputLabel = lblMatch3Stance };
+            btnStartMatch4.BindingContext = new MatchUp() { Home = Poule.TeamB, Away = Poule.TeamC, OutputLabel = lblMatch4Stance };
+            btnStartMatch5.BindingContext = new MatchUp() { Home = Poule.TeamB, Away = Poule.TeamD, OutputLabel = lblMatch5Stance };
+            btnStartMatch6.BindingContext = new MatchUp() { Home = Poule.TeamC, Away = Poule.TeamD, OutputLabel = lblMatch6Stance };
         }
 
         private void InitTeams()
         {
             //Initializing teams and their stats, these can be dynamically changed on the simulator
 
-            poule.TeamA = serviceProvider.GetService<ITeam>();
-            poule.TeamA.Name = "Team A";
-            poule.TeamA.OffensePoints = 61;
-            poule.TeamA.DefensePoints = 83;
-            poule.TeamA.TeamPlayPoints = 72;
+            Poule.TeamA = ServiceProvider.GetService<ITeam>();
+            Poule.TeamA.Name = "Team A";
+            Poule.TeamA.OffensePoints = 61;
+            Poule.TeamA.DefensePoints = 83;
+            Poule.TeamA.TeamPlayPoints = 72;
 
-            poule.TeamB = serviceProvider.GetService<ITeam>();
-            poule.TeamB.Name = "Team B";
-            poule.TeamB.OffensePoints = 74;
-            poule.TeamB.DefensePoints = 65;
-            poule.TeamB.TeamPlayPoints = 84;
+            Poule.TeamB = ServiceProvider.GetService<ITeam>();
+            Poule.TeamB.Name = "Team B";
+            Poule.TeamB.OffensePoints = 74;
+            Poule.TeamB.DefensePoints = 65;
+            Poule.TeamB.TeamPlayPoints = 84;
 
-            poule.TeamC = serviceProvider.GetService<ITeam>();
-            poule.TeamC.Name = "Team C";
-            poule.TeamC.OffensePoints = 69;
-            poule.TeamC.DefensePoints = 61;
-            poule.TeamC.TeamPlayPoints = 93;
+            Poule.TeamC = ServiceProvider.GetService<ITeam>();
+            Poule.TeamC.Name = "Team C";
+            Poule.TeamC.OffensePoints = 69;
+            Poule.TeamC.DefensePoints = 61;
+            Poule.TeamC.TeamPlayPoints = 93;
 
-            poule.TeamD = serviceProvider.GetService<ITeam>();
-            poule.TeamD.Name = "Team D";
-            poule.TeamD.OffensePoints = 52;
-            poule.TeamD.DefensePoints = 85;
-            poule.TeamD.TeamPlayPoints = 83;
+            Poule.TeamD = ServiceProvider.GetService<ITeam>();
+            Poule.TeamD.Name = "Team D";
+            Poule.TeamD.OffensePoints = 52;
+            Poule.TeamD.DefensePoints = 85;
+            Poule.TeamD.TeamPlayPoints = 83;
 
-            BindingContext = poule;
+            BindingContext = Poule;
         }
 
         private void FinalizePoule()
         {
             List<ITeam> teams = new List<ITeam>()
             {
-                poule.TeamA,
-                poule.TeamB,
-                poule.TeamC,
-                poule.TeamD,
+                Poule.TeamA,
+                Poule.TeamB,
+                Poule.TeamC,
+                Poule.TeamD,
             };
 
             // Teams get sorted
@@ -146,7 +150,7 @@ namespace WK_Poule_Simulator
         private void Reset()
         {
             //Simulator Resets to zero.
-            matchesPlayed = 0;
+            MatchesPlayed = 0;
             btnStartMatch1.IsEnabled = btnStartMatch2.IsEnabled = btnStartMatch3.IsEnabled = btnStartMatch4.IsEnabled = btnStartMatch5.IsEnabled = btnStartMatch6.IsEnabled = true;
             btnStartMatch1.Opacity = btnStartMatch2.Opacity = btnStartMatch3.Opacity = btnStartMatch4.Opacity = btnStartMatch5.Opacity = btnStartMatch6.Opacity = 1;
             btnStartMatch1.BackgroundColor = btnStartMatch2.BackgroundColor = btnStartMatch3.BackgroundColor = btnStartMatch4.BackgroundColor = btnStartMatch5.BackgroundColor = btnStartMatch6.BackgroundColor = Color.FromHex("#55FF00");
